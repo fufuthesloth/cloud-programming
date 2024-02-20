@@ -10,3 +10,12 @@ resource "aws_route53_record" "root" {
     evaluate_target_health = true
   }
 }
+
+resource "aws_route53_health_check" "domain_health_check" {
+  fqdn              = "fufuvr.com"
+  port              = 443
+  type              = "HTTPS"
+  resource_path     = "/"
+  failure_threshold = "5"
+  request_interval  = "30"
+}
